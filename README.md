@@ -88,7 +88,7 @@ Objetivo: criar operações de cadastro, listagem, edição e remoção.
 - Botões concluir/remover
 - Atualização da tela apos cada ação
 
-5. 95-105 min: Fechamento
+5. Fechamento
 - Erros comuns (CORS, porta errada, JSON invalido)
 - Mini desafio: filtro de tarefas concluidas
 
