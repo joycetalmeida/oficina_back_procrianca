@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício Prático - Dia 1</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 13px;
+      color: #1e293b;
+      background: #f8fafc;
+      padding: 36px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: #0b3d91;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 28px;
+      color: #fff;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .header h1 { font-size: 22px; font-weight: 700; }
+    .header p  { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+    .badge {
+      background: #fbbf24;
+      color: #1c1917;
+      font-weight: 700;
+      font-size: 11px;
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    .ident {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .campo {
+      flex: 1;
+      border-bottom: 2px solid #94a3b8;
+      padding-bottom: 4px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .secao {
+      margin-bottom: 24px;
+    }
+
+    .secao-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .secao-num {
+      background: #0b3d91;
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .secao-num.verde  { background: #15803d; }
+    .secao-num.roxo   { background: #6d28d9; }
+    .secao-num.rosa   { background: #be185d; }
+    .secao-num.laranja{ background: #b45309; }
+
+    .secao-header h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    p  { line-height: 1.6; margin-bottom: 8px; }
+    ul, ol { padding-left: 20px; margin-bottom: 10px; }
+    li { margin-bottom: 5px; line-height: 1.5; }
+
+    .contexto {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    pre {
+      background: #0f172a;
+      color: #86efac;
+      font-family: 'Cascadia Code', 'Courier New', monospace;
+      font-size: 11px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 10px 0;
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+
+    .inline-code {
+      background: #e2e8f0;
+      color: #0f172a;
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-family: 'Cascadia Code', monospace;
+      font-size: 11px;
+    }
+
+    .resposta {
+      border: 2px dashed #94a3b8;
+      border-radius: 8px;
+      padding: 12px;
+      min-height: 64px;
+      margin: 10px 0;
+      color: #94a3b8;
+      font-size: 11px;
+    }
+
+    .resposta::before { content: 'Escreva sua resposta aqui...'; }
+
+    .check {
+      list-style: none;
+      padding: 0;
+    }
+
+    .check li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 12px;
+    }
+
+    .check li:last-child { border-bottom: none; }
+
+    .box {
+      width: 16px; height: 16px;
+      border: 2px solid #94a3b8;
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .aviso {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      margin: 12px 0;
+    }
+
+    .ok {
+      background: #dcfce7;
+      border-left: 4px solid #16a34a;
+      padding: 10px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 12px;
+      margin: 12px 0;
+    }
+
+    hr { border: none; border-top: 1px solid #e2e8f0; margin: 20px 0; }
+
+    .nivel {
+      background: #faf5ff;
+      border: 1px solid #c4b5fd;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-top: 8px;
+    }
+
+    .nivel h3 { color: #6d28d9; font-size: 13px; margin-bottom: 8px; }
+
+    @media print {
+      body { padding: 20px; font-size: 12px; }
+      .secao { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>Exercício Prático - Dia 1</h1>
+      <p>Oficina Backend com Node.js - API básica + integração com frontend</p>
+    </div>
+    <span class="badge">20 min</span>
+  </div>
+</div>
+
+<div class="ident">
+  <div class="campo">Nome: ___________________________________________________</div>
+  <div class="campo">Data: _______________</div>
+</div>
+
+<div class="secao">
+  <div class="secao-header">
+    <div class="secao-num">1</div>
+    <h2>Questão conceitual - O que é o backend?</h2>
+  </div>
+
+  <div class="contexto">
+    Com suas palavras, explique a diferença entre frontend e backend e por que precisamos de um servidor para ter um sistema completo.
+  </div>
+
+  <div class="resposta"></div>
+</div>
+
+<hr/>
+
+<div class="secao">
+  <div class="secao-header">
+    <div class="secao-num verde">2</div>
+    <h2>Mão na massa - Criar o endpoint <code class="inline-code">GET /instrutores</code></h2>
+  </div>
+
+  <p>Abra o arquivo <code class="inline-code">dia1-api-basica/backend/server.js</code> e adicione um novo endpoint que retorna uma lista de instrutores.</p>
+
+  <p>Requisitos obrigatórios:</p>
+  <ul>
+    <li>Criar um array <code class="inline-code">instrutores</code> com pelo menos 2 objetos.</li>
+    <li>Cada instrutor deve ter os campos: <code class="inline-code">id</code>, <code class="inline-code">nome</code>, <code class="inline-code">especialidade</code>.</li>
+    <li>O endpoint deve responder em <code class="inline-code">GET /instrutores</code>.</li>
+    <li>Testar no navegador: <code class="inline-code">http://localhost:3333/instrutores</code>.</li>
+  </ul>
+
+  <div class="aviso">
+    Lembre-se: o servidor reinicia automaticamente quando você salvar o arquivo (nodemon). Não precisa parar e subir de novo.
+  </div>
+
+  <p>Escreva abaixo o código que você criou:</p>
+  <div class="resposta" style="min-height: 120px;"></div>
+
+  <div class="ok">
+    Como saber se deu certo: Abrir <code class="inline-code">http://localhost:3333/instrutores</code> no navegador deve mostrar um array JSON com seus instrutores.
+  </div>
+</div>
+
+<hr/>
+
+<div class="secao">
+  <div class="secao-header">
+    <div class="secao-num roxo">3</div>
+    <h2>Integração - Exibir instrutores no frontend</h2>
+  </div>
+
+  <p>Abra o arquivo <code class="inline-code">dia1-api-basica/frontend/script.js</code> e adicione uma nova função que busca e exibe os instrutores na página.</p>
+
+  <p>Requisitos obrigatórios:</p>
+  <ul>
+    <li>Criar uma função <code class="inline-code">carregarInstrutores()</code> usando <code class="inline-code">fetch</code> e <code class="inline-code">async/await</code>.</li>
+    <li>Buscar o endpoint <code class="inline-code">http://localhost:3333/instrutores</code>.</li>
+    <li>Renderizar os resultados no DOM (pode usar uma nova <code class="inline-code">&lt;ul&gt;</code> no HTML).</li>
+    <li>Exibir mensagem de erro amigável se a API estiver fora do ar.</li>
+  </ul>
+
+  <p>Você também vai precisar adicionar no <code class="inline-code">index.html</code>:</p>
+  <pre>&lt;button id="btnInstrutores"&gt;Carregar instrutores&lt;/button&gt;
+&lt;ul id="listaInstrutores"&gt;&lt;/ul&gt;</pre>
+
+  <p>Escreva o código da função aqui:</p>
+  <div class="resposta" style="min-height: 140px;"></div>
+</div>
+
+<hr/>
+
+<div class="secao">
+  <div class="secao-header">
+    <div class="secao-num rosa">4</div>
+    <h2>Teste de erro - o que acontece quando a API cai?</h2>
+  </div>
+
+  <p>Com o frontend aberto e funcionando, pare o servidor no terminal (<kbd>Ctrl + C</kbd>) e clique nos botões da página.</p>
+
+  <ol>
+    <li>O que apareceu na tela quando você clicou em "Carregar cursos" sem a API?</li>
+  </ol>
+  <div class="resposta"></div>
+
+  <ol start="2">
+    <li>O que você viu no console do navegador (F12 - Console)?</li>
+  </ol>
+  <div class="resposta"></div>
+
+  <ol start="3">
+    <li>Qual é a diferença entre <code class="inline-code">resposta.ok === false</code> e um erro de rede (catch)?</li>
+  </ol>
+  <div class="resposta"></div>
+</div>
+
+<hr/>
+
+<div class="secao">
+  <div class="secao-header">
+    <div class="secao-num laranja">5</div>
+    <h2>Checklist de entrega</h2>
+  </div>
+
+  <ul class="check">
+    <li><div class="box"></div> Servidor subindo sem erro com <code class="inline-code">npm run dev</code>.</li>
+    <li><div class="box"></div> <code class="inline-code">GET /</code> retornando JSON no browser.</li>
+    <li><div class="box"></div> <code class="inline-code">GET /status</code> retornando <code class="inline-code">{ status: "ok", horário: "..." }</code>.</li>
+    <li><div class="box"></div> <code class="inline-code">GET /cursos</code> retornando array de cursos.</li>
+    <li><div class="box"></div> <code class="inline-code">GET /instrutores</code> criado e retornando dados.</li>
+    <li><div class="box"></div> Frontend carregando cursos e instrutores ao clicar nos botões.</li>
+    <li><div class="box"></div> Mensagem de erro aparecendo quando a API está offline.</li>
+    <li><div class="box"></div> Sem erros de console além do esperado quando API está offline.</li>
+  </ul>
+</div>
+
+<hr/>
+
+<div class="nivel">
+  <h3>Nível avançado - para quem terminar antes</h3>
+  <ol>
+    <li style="margin-bottom:10px;">
+      Filtro por nível: Criar endpoint <code class="inline-code">GET /cursos?nivel=iniciante</code> que filtra o array pelo query parameter.
+      <br/><small style="color:#6d28d9;">Dica: use <code>req.query.nivel</code> no handler da rota.</small>
+    </li>
+    <li style="margin-bottom:10px;">
+      Loading state: Desabilitar o botão enquanto o <code class="inline-code">fetch</code> está em andamento e habilitá-lo ao terminar.
+      <br/><small style="color:#6d28d9;">Dica: <code>btnCarregar.disabled = true</code> antes do fetch, <code>false</code> no finally.</small>
+    </li>
+    <li>
+      Contador: Exibir na tela quantos cursos foram retornados: "3 cursos encontrados".
+    </li>
+  </ol>
+</div>
+
+</body>
+</html>
